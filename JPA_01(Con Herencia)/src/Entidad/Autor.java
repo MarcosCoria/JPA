@@ -1,0 +1,76 @@
+/* Ejercicio_01: 
+a) Entidades
+Crearemos el siguiente modelo de entidades: 
+Entidad Libro 
+La entidad libro modela los libros que están disponibles en la biblioteca para ser prestados. En 
+esta entidad, el atributo “ejemplares” contiene la cantidad total de ejemplares de ese libro, 
+mientras que el atributo “ejemplaresPrestados” contiene cuántos de esos ejemplares se 
+encuentran prestados en este momento y el atributo “ejemplaresRestantes” contiene cuántos 
+de esos ejemplares quedan para prestar.
+Entidad Autores 
+La entidad autor modela los autores de libros. 
+Entidad Editorial
+La entidad editorial modela las editoriales que publican libros */
+package Entidad;
+
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+/* @author G96xyFast */
+@Entity
+public class Autor implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    private boolean alta;
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public boolean isAlta() {
+        return alta;
+    }
+    public void setAlta(boolean alta) {
+        this.alta = alta;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Autor)) {
+            return false;
+        }
+        Autor other = (Autor) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Autor{" + "id=" + id + ", nombre=" + nombre + ", alta=" + alta + '}';
+    }
+}
